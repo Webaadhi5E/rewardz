@@ -14,8 +14,20 @@
           </div>
           <div class="mt-3">
             <div class="d-flex align-items-center">
-              <div class="fw-bold fs-5">
+              <div class="fw-bold fs-5 me-2">
                 Applied Filters:
+              </div>
+              <div class="filter-item-applied d-flex justify-space-between">
+                e-Voucher
+                <span class="icon-border icon-border-drop icon-border-drops border-start-0 px-2">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>
+              </div>
+              <div class="filter-item-applied d-flex justify-space-between ms-2">
+                Clear Filters
+                <span class="icon-border icon-border-drop icon-border-drops border-start-0 px-2">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>
               </div>
             </div>
           </div>
@@ -25,7 +37,7 @@
         <div class="col-md-4">
           <div class="py-3">
             <div class="category p-2">
-              <div class="fw-bold fs-4">
+              <div class="fw-bold fs-4 mb-2">
                 Categories
               </div>
               <div class="card">
@@ -55,7 +67,7 @@
                       </div>
                       <div class="ms-auto">
                         <div>
-                          <fa-icon [icon]="faCircleCheck" class="not-check"></fa-icon>
+                          <fa-icon [icon]="faCheckCircleRegular"></fa-icon>
                         </div>
                       </div>
                     </div>
@@ -74,7 +86,7 @@
                       </div>
                       <div class="ms-auto">
                         <div>
-                          <fa-icon [icon]="faCircleCheck" class="not-check"></fa-icon>
+                          <fa-icon [icon]="faCheckCircleRegular"></fa-icon>
                         </div>
                       </div>
                     </div>
@@ -93,7 +105,7 @@
                       </div>
                       <div class="ms-auto">
                         <div>
-                          <fa-icon [icon]="faCircleCheck" class="not-check"></fa-icon>
+                          <fa-icon [icon]="faCheckCircleRegular"></fa-icon>
                         </div>
                       </div>
                     </div>
@@ -105,7 +117,7 @@
         </div>
         <div class="col-md-8">
           <div class="d-flex align-items-center">
-            <div class="fw-bold fs-4">
+            <div class="fw-bold fs-4 mt-4">
               21 results found
             </div>
             <div class="ms-auto">
@@ -120,50 +132,70 @@
               @for(item of productList;track item;let i=$index){
               <div class="col">
                 <div class="card h-100">
-                  <img [src]="item.display_img_url || placeholderImage" class="card-img-top fixed-height-img"
-                    alt="product-img">
-                  <div class="card-body">
-                    <h5 class="card-title text-center">{{item?.name}}</h5>
-                    <p class="card-text text-center mt-4 fw-bold">{{item?.points}} Points</p>
-                  </div>
-                  <div class="p-2">
-                    <hr>
-                  </div>
-                  <div class="mb-2 d-flex align-items-center justify-content-center">
-                    Valid until: <strong>{{ item.valid_until | date: 'shortDate' }}</strong>
+                  <div class="position-relative">
+                    <img [src]="item.display_img_url || placeholderImage" class="card-img-top fixed-height-img"
+                      alt="product-img">
+                    <div class="stock-status">
+                      @if(item?.quantity === 0){
+                      <div class="stock-alert">
+                        Out of Stock
+                      </div>
+                      }
+                      @else if(item?.quantity <= item?.low_quantity){ <div class="demand-alert mb-2">
+                        On High Demand
+                    </div>
+                    <div class="stock-alert">
+                      Only {{item?.quantity}} rewards left
+                    </div>
+                    }
                   </div>
                 </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{item?.name}}</h5>
+                  <p class="card-text text-center mt-4 fw-bold">{{item?.points}} Points</p>
+                </div>
+                <div class="p-2">
+                  <hr>
+                </div>
+                <div class="mb-2 d-flex align-items-center justify-content-center">
+                  Valid until: <strong>{{ item.valid_until | date: 'shortDate' }}</strong>
+                </div>
               </div>
-              }
             </div>
+            }
           </div>
         </div>
       </div>
     </div>
-  </main>
+</div>
+</main>
 </div>
 <ng-container [ngTemplateOutlet]="sortPopup"></ng-container>
 
 <ng-template #sortPopup>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Sort By</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <div>
-        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists,
-        etc.
+      <div class="d-flex gap-2">
+        <input type="radio" name="select" id="option-1" [(ngModel)]="sortOption" value="option1" checked>
+        <input type="radio" name="select" id="option-2" [(ngModel)]="sortOption" value="option2">
+        <label for="option-1" class="option option-1">
+          <div class="dot"></div>
+          <span>A-Z</span>
+        </label>
+        <label for="option-2" class="option option-2">
+          <div class="dot"></div>
+          <span>Z-A</span>
+        </label>
       </div>
-      <div class="dropdown mt-3">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+    </div>
+    <div class="offcanvas-footer mx-3 my-3">
+      <div>
+        <button class="btn btn-danger w-100" (click)="productSort()" type="button" data-bs-dismiss="offcanvas"
+          aria-label="Close">Apply</button>
       </div>
     </div>
   </div>
