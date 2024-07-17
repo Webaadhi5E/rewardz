@@ -1,43 +1,43 @@
 [
   {
     "pk": 987,
-    "name": "Reward Name 1",
+    "name": "A 1",
     "points": 150,
     "display_img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3KLsKw0jLKi6EOWlMs2QnOvqlopxW-8i54w&s",
-    "quantity": 14,
+    "quantity": 0,
     "valid_until": "2024-12-31T00:00:00",
     "low_quantity": 10
   },
   {
     "pk": 988,
-    "name": "Reward Name 2",
+    "name": "B 2",
     "points": 200,
     "display_img_url": "https://hips.hearstapps.com/hmg-prod/images/close-up-of-blossoming-rose-flower-royalty-free-image-1580853844.jpg?crop=0.668xw:1.00xh;0.248xw,0&resize=980:*",
-    "quantity": 20,
+    "quantity": 0,
     "valid_until": "2024-11-30T00:00:00",
     "low_quantity": 5
   },
   {
     "pk": 989,
-    "name": "Reward Name 3",
+    "name": "E 3",
     "points": 180,
     "display_img_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhVk7wm5YhOCEga0nD2PjtbtOMPnzJ15rerMcG5EGA1KOT91Kjpd0Hsgajv2Or65K_JLALD85Jt8cJOW8Ro76H2n4xFeMMhu0fwbhUBIpmMJ4fS109ZygIeOnwVTWXtl0R1p1qUa7169f8/s1600/peter-td.png",
-    "quantity": 15,
+    "quantity": 6,
     "valid_until": "2024-10-15T00:00:00",
     "low_quantity": 8
   },
   {
     "pk": 990,
-    "name": "Reward Name 4",
+    "name": "C 4",
     "points": 220,
     "display_img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxaMdWW9vBylCTaoYe-wHiwWi6Cm0TQ5xgKg&s",
-    "quantity": 18,
+    "quantity": 10,
     "valid_until": "2024-09-20T00:00:00",
     "low_quantity": 12
   },
   {
     "pk": 991,
-    "name": "Reward Name 5",
+    "name": "F 5",
     "points": 160,
     "display_img_url": "https://logos-world.net/wp-content/uploads/2020/11/IRCTC-Logo.png",
     "quantity": 10,
@@ -46,7 +46,7 @@
   },
   {
     "pk": 992,
-    "name": "Reward Name 6",
+    "name": "D 6",
     "points": 190,
     "display_img_url": "https://miro.medium.com/v2/resize:fit:1200/1*uEhk22JbMnOee9xOB71mVA.jpeg",
     "quantity": 12,
@@ -55,7 +55,7 @@
   },
   {
     "pk": 993,
-    "name": "Reward Name 7",
+    "name": "Z 7",
     "points": 210,
     "display_img_url": "https://hips.hearstapps.com/hmg-prod/images/mata-atlantica-atlantic-forest-in-brazil-royalty-free-image-1668724621.jpg",
     "quantity": 22,
