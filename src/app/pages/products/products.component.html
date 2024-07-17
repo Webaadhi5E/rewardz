@@ -1,0 +1,170 @@
+<div class="h-100">
+  <main>
+    <div class="container mt-4">
+      <div class="row pt-3">
+        <div class="col-md-12">
+          <div class="fw-bold fs-4">
+            Search
+          </div>
+          <div class="mt-2">
+            <form class="d-flex position-relative" role="search">
+              <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+          <div class="mt-3">
+            <div class="d-flex align-items-center">
+              <div class="fw-bold fs-5">
+                Applied Filters:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="py-3">
+            <div class="category p-2">
+              <div class="fw-bold fs-4">
+                Categories
+              </div>
+              <div class="card">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <fa-icon [icon]="faChevronDown"></fa-icon>
+                      </div>
+                      <div class="ms-2">
+                        e-Voucher
+                      </div>
+                      <div class="ms-auto">
+                        <div>
+                          <fa-icon [icon]="faCircleCheck" class="check"></fa-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <fa-icon [icon]="faChevronDown"></fa-icon>
+                      </div>
+                      <div class="ms-2">
+                        Products
+                      </div>
+                      <div class="ms-auto">
+                        <div>
+                          <fa-icon [icon]="faCircleCheck" class="not-check"></fa-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card mt-2">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <fa-icon [icon]="faChevronUp"></fa-icon>
+                      </div>
+                      <div class="ms-2">
+                        Evergreen
+                      </div>
+                      <div class="ms-auto">
+                        <div>
+                          <fa-icon [icon]="faCircleCheck" class="not-check"></fa-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card mt-2">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <fa-icon [icon]="faChevronUp"></fa-icon>
+                      </div>
+                      <div class="ms-2">
+                        Fashion & Retail
+                      </div>
+                      <div class="ms-auto">
+                        <div>
+                          <fa-icon [icon]="faCircleCheck" class="not-check"></fa-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="d-flex align-items-center">
+            <div class="fw-bold fs-4">
+              21 results found
+            </div>
+            <div class="ms-auto">
+              <div>
+                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Sort</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              @for(item of productList;track item;let i=$index){
+              <div class="col">
+                <div class="card h-100">
+                  <img [src]="item.display_img_url || placeholderImage" class="card-img-top fixed-height-img"
+                    alt="product-img">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">{{item?.name}}</h5>
+                    <p class="card-text text-center mt-4 fw-bold">{{item?.points}} Points</p>
+                  </div>
+                  <div class="p-2">
+                    <hr>
+                  </div>
+                  <div class="mb-2 d-flex align-items-center justify-content-center">
+                    Valid until: <strong>{{ item.valid_until | date: 'shortDate' }}</strong>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<ng-container [ngTemplateOutlet]="sortPopup"></ng-container>
+
+<ng-template #sortPopup>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists,
+        etc.
+      </div>
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>
